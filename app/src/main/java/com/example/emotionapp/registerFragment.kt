@@ -17,8 +17,7 @@ import kotlinx.coroutines.withContext
 import retrofit2.Response
 import java.net.SocketTimeoutException
 
-
-class LoginFragment1 : Fragment() {
+class registerFragment : Fragment() {
 
     val myCouroutineScope = CoroutineScope(Dispatchers.IO)
 
@@ -31,69 +30,66 @@ class LoginFragment1 : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_login1, container, false)
+        return inflater.inflate(R.layout.fragment_register, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val loginButton: Button = view.findViewById(R.id.loginButtonR)
-        val registerButton: Button = view.findViewById(R.id.button3)
-        val usernameText :EditText = view.findViewById(R.id.usernameTextR)
-        val passwordText :EditText = view.findViewById(R.id.passwordTextR)
+
+        val registerButton: Button = view.findViewById(R.id.loginButtonR)
+        val usernameText : EditText = view.findViewById(R.id.usernameTextR)
+        val emailText: EditText = view.findViewById(R.id.emailTextR)
+        val passwordText : EditText = view.findViewById(R.id.passwordTextR)
 
         val mainActivity = activity as MainActivity
-        val device = mainActivity.deviceHCMAC
-        val outputStream = mainActivity.OutputStream
 
         val navController = findNavController()
 
-        //Listener for the login button
-        loginButton.setOnClickListener(object : View.OnClickListener {
+        //Listener for the register button --> Register Fragment
+        registerButton.setOnClickListener(object : View.OnClickListener {
             override fun onClick(v: View?) {
                 val textView: TextView = view.findViewById(R.id.textViewR)
-                if (device != null) {
-                    textView.text = "Device not found, pair the device and restart the application"
-                    val action = LoginFragment1Directions.actionLoginFragment1ToControlsFragment()
-                    navController.navigate(action)
-                }else{
 
-                    //User Login Handler
+                if(usernameText.text.isNotBlank() && emailText.text.isNotBlank() && passwordText.text.isNotBlank())
+                {
+                    //User Registration Handler
                     myCouroutineScope.launch {
                         try{
                             val username = usernameText.text
+                            val email = emailText.text
                             val password = passwordText.text
-                            val response : Response<LoginResponse> = mainActivity.customService.loginUser(username.toString(), password.toString())
+                            val response: Response<RegisterResponse> =
+                                mainActivity.customService.registerUser(
+                                    username.toString(),
+                                    email.toString(),
+                                    password.toString()
+                                )
 
-                            if (response.isSuccessful){
-                                //User has entered the right credentials --> Access to controls panel
+                            if (response.isSuccessful) {
+                                //User has been successfully registered
                                 withContext(Dispatchers.Main) {
-                                    val action = LoginFragment1Directions.actionLoginFragment1ToControlsFragment()
+                                    val action =
+                                        registerFragmentDirections.actionRegisterFragmentToLoginFragment1()
                                     navController.navigate(action)
                                 }
-                            }else{
-                                textView.text = "\nInvalid User or Password! "
+                            } else {
+                                textView.text = "Username already exist! "
                                 textView.setTextColor(Color.RED)
                             }
                         }catch (e: SocketTimeoutException) {
                             withContext(Dispatchers.Main) {
-                                textView.text = "\nServer is currently offline or not reacheble"
+                                textView.text = "Server is currently offline or not reacheble"
                             }
                         } catch (e: Exception) {
                             withContext(Dispatchers.Main) {
                                 textView.text = "\nAn error occurred: ${e.message}"
                             }
                         }
-
                     }
+                }else{
+                    textView.text = "Fill al the fields!"
+                    textView.setTextColor(Color.RED)
                 }
-            }
-        })
-
-        //Listener for the register button --> Register Fragment
-        registerButton.setOnClickListener(object : View.OnClickListener {
-            override fun onClick(v: View?) {
-                val action = LoginFragment1Directions.actionLoginFragment1ToRegisterFragment()
-                navController.navigate(action)
             }
         })
     }

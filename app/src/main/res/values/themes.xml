@@ -3,6 +3,11 @@
     <style name="Base.Theme.EMotionApp" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="colorPrimary">@color/darkBlue</item>
+        <item name="colorPrimaryVariant">@color/darkBlue</item>
+        <item name="colorPrimaryDark">@color/darkBlue</item>
+        <item name="colorSurface">@color/darkBlue</item>
+        <item name="android:statusBarColor">@color/darkBlue</item>
     </style>
 
     <style name="Theme.EMotionApp" parent="Base.Theme.EMotionApp" />

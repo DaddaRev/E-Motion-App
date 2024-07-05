@@ -9,30 +9,33 @@
 
     <TextView
         android:id="@+id/textViewR"
-        android:layout_width="299dp"
-        android:layout_height="126dp"
+        android:layout_width="310dp"
+        android:layout_height="102dp"
+        android:text="\nInsert your data:"
         android:textAlignment="center"
         android:textColor="@color/darkBlue"
-        android:textSize="20sp"
+        android:textSize="22sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.717" />
+        app:layout_constraintVertical_bias="0.313" />
 
     <Button
         android:id="@+id/loginButtonR"
-        android:layout_width="123dp"
-        android:layout_height="58dp"
+        android:layout_width="159dp"
+        android:layout_height="56dp"
         android:backgroundTint="@color/darkBlue"
-        android:text="Login"
+        android:text="Register"
         android:textColor="@color/white"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.476"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.849" />
+        app:layout_constraintVertical_bias="0.871" />
 
     <EditText
         android:id="@+id/usernameTextR"
@@ -47,7 +50,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.411" />
+        app:layout_constraintVertical_bias="0.438" />
 
     <EditText
         android:id="@+id/passwordTextR"
@@ -57,55 +60,42 @@
         android:hint="Password"
         android:inputType="textPassword"
         android:textColor="@color/black"
-        android:textColorHint="@color/black"
+        android:textSize="20sp"
+        android:typeface="normal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.705" />
+
+    <EditText
+        android:id="@+id/emailTextR"
+        android:layout_width="223dp"
+        android:layout_height="68dp"
+        android:ems="10"
+        android:inputType="text"
+        android:text="E-mail"
+        android:textColor="@color/black"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.538" />
+        app:layout_constraintVertical_bias="0.57" />
 
     <TextView
-        android:id="@+id/textView"
-        android:layout_width="130dp"
-        android:layout_height="46dp"
-        android:text="New here?"
-        android:textAlignment="center"
-        android:textColor="@color/black"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.241"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.954" />
-
-    <Button
-        android:id="@+id/button3"
-        android:layout_width="126dp"
-        android:layout_height="46dp"
-        android:backgroundTint="@color/white"
-        android:text="Register"
+        android:id="@+id/titleViewR"
+        android:layout_width="171dp"
+        android:layout_height="92dp"
+        android:text="E-Motion App"
         android:textAlignment="center"
         android:textColor="@color/darkBlue"
-        android:textSize="18sp"
+        android:textSize="34sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.729"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.938" />
+        app:layout_constraintVertical_bias="0.086" />
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="257dp"
-        android:layout_height="221dp"
-        android:src="@drawable/logo"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.08" />
 </androidx.constraintlayout.widget.ConstraintLayout>

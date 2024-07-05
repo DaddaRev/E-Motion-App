@@ -12,10 +12,35 @@
         <action
             android:id="@+id/action_loginFragment1_to_controlsFragment"
             app:destination="@id/controlsFragment" />
+        <action
+            android:id="@+id/action_loginFragment1_to_registerFragment"
+            app:destination="@id/registerFragment" />
     </fragment>
     <fragment
         android:id="@+id/controlsFragment"
         android:name="com.example.emotionapp.ControlsFragment"
         android:label="fragment_controls"
-        tools:layout="@layout/fragment_controls" />
+        tools:layout="@layout/fragment_controls" >
+        <action
+            android:id="@+id/action_controlsFragment_to_meteoFragment"
+            app:destination="@id/meteoFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/registerFragment"
+        android:name="com.example.emotionapp.registerFragment"
+        android:label="fragment_register"
+        tools:layout="@layout/fragment_register" >
+        <action
+            android:id="@+id/action_registerFragment_to_loginFragment1"
+            app:destination="@id/loginFragment1" />
+    </fragment>
+    <fragment
+        android:id="@+id/meteoFragment"
+        android:name="com.example.emotionapp.MeteoFragment"
+        android:label="fragment_meteo"
+        tools:layout="@layout/fragment_meteo" >
+        <action
+            android:id="@+id/action_meteoFragment_to_controlsFragment"
+            app:destination="@id/controlsFragment" />
+    </fragment>
 </navigation>
