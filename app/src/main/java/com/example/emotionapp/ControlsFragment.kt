@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ProgressBar
 import android.widget.SeekBar
 import android.widget.TextView
 import androidx.navigation.findNavController
@@ -37,14 +38,13 @@ class ControlsFragment : Fragment() {
         val device = mainActivity.deviceHCMAC
         val outputStream = mainActivity.OutputStream
 
-        val text :TextView = view.findViewById(R.id.textView2)
-
         val slideBarUpDown: SeekBar = view.findViewById(R.id.seekBar)
         val slideBarRightLeft: SeekBar = view.findViewById(R.id.seekBar2)
         val waterButton: Button = view.findViewById(R.id.button)        // Water action trigger button
         val cleanButton: Button = view.findViewById(R.id.button2)       // Clean action trigger button
         val stopButton: Button = view.findViewById(R.id.stopButon)      // Stop the servo button
-        val meteoButton: Button = view.findViewById(R.id.meteoButton)   // Check meteo for next days button
+        val weatherButton: Button = view.findViewById(R.id.meteoButton)   // Check meteo for next days button
+        val progressBattery :ProgressBar = view.findViewById(R.id.batteryLevel) // Battery level
 
         val navController = findNavController()
 
@@ -73,7 +73,7 @@ class ControlsFragment : Fragment() {
         })
 
         //Listener for meteo button
-        meteoButton.setOnClickListener(object : View.OnClickListener {
+        weatherButton.setOnClickListener(object : View.OnClickListener {
             override fun onClick(v: View?) {
                 //Tells the BT module that user is on meteo interface --> Not using controls
                 val stringToSend: String = "M\n"
@@ -102,7 +102,6 @@ class ControlsFragment : Fragment() {
         // Listener for the up/down slide bar
         slideBarRightLeft.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
             override fun onProgressChanged(seekBar: SeekBar, progress: Int, fromUser: Boolean) {
-                text.text = progress.toString() //TO REMOVE
                 val stringToSend: String = "H$progress\n"
                 mainActivity.writeBytes(stringToSend.toByteArray())
             }
@@ -115,6 +114,8 @@ class ControlsFragment : Fragment() {
                 seekBar.progress = 50  //Returning in the middle when user stops moving
             }
         })
+
+
     }
 
     override fun onDestroy(){

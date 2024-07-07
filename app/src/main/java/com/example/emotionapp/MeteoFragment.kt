@@ -62,6 +62,9 @@ class MeteoFragment : Fragment() {
 
                             if (response.isSuccessful) {
                                 val weatherResponse: WeatherReport? = response.body()
+                                threeHoursText.text = "Waiting.."
+                                tomorrowText.text = "Waiting.."
+
 
                                 if (weatherResponse != null) {
                                     threeHoursText.text = weatherResponse.message1

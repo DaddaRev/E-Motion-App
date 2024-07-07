@@ -22,7 +22,9 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import java.io.IOException
+import java.io.InputStream
 import java.io.OutputStream
+import java.util.Arrays
 import java.util.UUID
 
 class MainActivity : AppCompatActivity() {
@@ -30,7 +32,8 @@ class MainActivity : AppCompatActivity() {
     private val MY_UUID : UUID = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB")  //Standard UUID for HT-06
     val context: Context = this     //Needed for the Thread execution
     var deviceHCMAC : BluetoothDevice? = null       //Device of interest
-    var OutputStream : OutputStream? = null         //Communication Stream with the HT device
+    var OutputStream : OutputStream? = null         //Output communication Stream with the HT device
+    var InputStream :InputStream? = null            //Input communication Stream with the HT device
     var bluetoothSocket: BluetoothSocket? = null    //Communication Socket Stream
 
     // Service related variables:
@@ -60,7 +63,7 @@ class MainActivity : AppCompatActivity() {
 
         if (bluetoothAdapter == null) {
             // Device doesn't support Bluetooth
-            Log.d("Message", "Device doesn't support Bluetooth")
+            Log.d("cnt", "Device doesn't support Bluetooth")
         }
 
         //Checking if the bluetooth permission is granted or not
@@ -87,18 +90,18 @@ class MainActivity : AppCompatActivity() {
         pairedDevices?.forEach { device ->
             val deviceName = device.name
             val deviceHardwareAddress = device.address // MAC address
-            Log.e("cnt", "Device Name --> $deviceName, Device MAC --> $deviceHardwareAddress")
-            if (deviceName == "HC-06") {
+            Log.d("cnt", "Device Name --> $deviceName, Device MAC --> $deviceHardwareAddress")
+            if (deviceName == "HC-05") {
                 deviceHCMAC = device  //Address of interest
-                println("HC-06 MAC: --> ${deviceHCMAC!!.address}")
+                Log.d("cnt","HC-05 MAC: --> ${deviceHCMAC!!.address}")
             }
         }
 
-        //  Eventually, you can start discovery of other devices here, see:
+        //  Eventually, you can start discovery other devices here, see:
         //  https://developer.android.com/develop/connectivity/bluetooth/find-bluetooth-devices#java
 
 
-        //Connect the HC-06 device in a separate thread
+        //Connect the HC-05 device in a separate thread
         class ConnectThread(device: BluetoothDevice) : Thread() {
 
             val mmSocket: BluetoothSocket? by lazy(LazyThreadSafetyMode.NONE) {
@@ -128,11 +131,12 @@ class MainActivity : AppCompatActivity() {
                 bluetoothAdapter?.cancelDiscovery()
                 mmSocket?.connect()
                 OutputStream = mmSocket?.outputStream
+                InputStream = mmSocket?.inputStream
                 bluetoothSocket = mmSocket
             }
 
         }
-        //Starting the thread if the HT-06 has been found
+        //Starting the thread if the HT-05 has been found
         if (deviceHCMAC != null)
         {
             val connectThread = ConnectThread(deviceHCMAC!!)
@@ -152,9 +156,20 @@ class MainActivity : AppCompatActivity() {
                 Log.d("error", "OutputStream is null --> Can't communicate")
             }
             OutputStream?.write(bytes)   //Writing the Bytes in the stream
+            //Thread.sleep(50)
         } catch (e: IOException) {
             Log.e("error", "Error occurred when sending data", e)
         }
+    }
+
+    fun readBytes():ByteArray? {
+        try{
+            return InputStream?.readBytes()
+        } catch (e: IOException) {
+            Log.e("error", "Error occurred when sending data", e)
+        }
+        val errorString :String = "Error"
+        return errorString.toByteArray()
     }
 
     override fun onStart() {

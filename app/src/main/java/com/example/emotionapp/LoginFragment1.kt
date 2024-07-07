@@ -51,11 +51,17 @@ class LoginFragment1 : Fragment() {
         loginButton.setOnClickListener(object : View.OnClickListener {
             override fun onClick(v: View?) {
                 val textView: TextView = view.findViewById(R.id.textViewR)
-                if (device != null) {
-                    textView.text = "Device not found, pair the device and restart the application"
+                if (device == null) {
+                    textView.text = "\nDevice not found, pair the device and restart the application"
+                    //val action = LoginFragment1Directions.actionLoginFragment1ToControlsFragment()
+                    //navController.navigate(action)
+                }else{
+
+                    //Remove this in production mode
+
                     val action = LoginFragment1Directions.actionLoginFragment1ToControlsFragment()
                     navController.navigate(action)
-                }else{
+
 
                     //User Login Handler
                     myCouroutineScope.launch {

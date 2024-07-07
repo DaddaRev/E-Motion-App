@@ -25,7 +25,7 @@ class WebService : Service() {
         .build()
 
     val retrofit = Retrofit.Builder()
-        .baseUrl(" http://10.0.2.2:5000 ")  //Change with the final production server http://10.0.2.2:5000
+        .baseUrl(" http://192.168.0.149:5000 ")  //Change with the final production server (Emulator: http://10.0.2.2:5000)
         .addConverterFactory(MoshiConverterFactory.create(moshi))
         .client(okHttpClient)
         .build()
