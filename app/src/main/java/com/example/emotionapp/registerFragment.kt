@@ -1,3 +1,5 @@
+//Davide Reverberi E-MotionApp
+
 package com.example.emotionapp
 
 import android.graphics.Color
@@ -17,6 +19,13 @@ import kotlinx.coroutines.withContext
 import retrofit2.Response
 import java.net.SocketTimeoutException
 
+/**
+ *
+ * RegisterFragment is the fragment that manages the functionality of registering a user to the application database.
+ * This class provides a user interface for entering data for creating a new personal account.
+ * Also includes navigation to the login fragment.
+ *
+ **/
 class registerFragment : Fragment() {
 
     val myCouroutineScope = CoroutineScope(Dispatchers.IO)
@@ -45,7 +54,7 @@ class registerFragment : Fragment() {
 
         val navController = findNavController()
 
-        //Listener for the register button --> Register Fragment
+        //Listener for the register button
         registerButton.setOnClickListener(object : View.OnClickListener {
             override fun onClick(v: View?) {
                 val textView: TextView = view.findViewById(R.id.textViewR)
@@ -59,7 +68,7 @@ class registerFragment : Fragment() {
                             val email = emailText.text
                             val password = passwordText.text
                             val response: Response<RegisterResponse> =
-                                mainActivity.customService.registerUser(
+                                mainActivity.customService.registerUser(    //Calling the register endpoint API
                                     username.toString(),
                                     email.toString(),
                                     password.toString()
@@ -76,7 +85,7 @@ class registerFragment : Fragment() {
                                 textView.text = "Username already exist! "
                                 textView.setTextColor(Color.RED)
                             }
-                        }catch (e: SocketTimeoutException) {
+                        } catch (e: SocketTimeoutException) {
                             withContext(Dispatchers.Main) {
                                 textView.text = "Server is currently offline or not reacheble"
                             }
@@ -87,7 +96,7 @@ class registerFragment : Fragment() {
                         }
                     }
                 }else{
-                    textView.text = "Fill al the fields!"
+                    textView.text = "Fill al the fields!"  //   All the fields are required for the registration
                     textView.setTextColor(Color.RED)
                 }
             }

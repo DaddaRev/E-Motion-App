@@ -1,3 +1,5 @@
+//Davide Reverberi E-MotionApp
+
 package com.example.emotionapp
 
 import android.Manifest
@@ -17,19 +19,21 @@ import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 import java.io.IOException
 import java.io.InputStream
 import java.io.OutputStream
-import java.util.Arrays
 import java.util.UUID
 
+/**
+ *
+ * Main activity of the entire application which deals with all the operations necessary for requesting permissions,
+ * pairing and connecting with Bluetooth devices; writing and reading data on the Bluetooth communication stream and
+ * managing the binding with the service to communicate with the server.
+ *
+ */
 class MainActivity : AppCompatActivity() {
 
-    private val MY_UUID : UUID = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB")  //Standard UUID for HT-06
+    private val MY_UUID : UUID = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB")  //Standard UUID for HT-05
     val context: Context = this     //Needed for the Thread execution
     var deviceHCMAC : BluetoothDevice? = null       //Device of interest
     var OutputStream : OutputStream? = null         //Output communication Stream with the HT device
@@ -127,16 +131,15 @@ class MainActivity : AppCompatActivity() {
                     }
                 }
 
-                // Cancel discovery because it otherwise slows down the connection.
-                bluetoothAdapter?.cancelDiscovery()
-                mmSocket?.connect()
-                OutputStream = mmSocket?.outputStream
-                InputStream = mmSocket?.inputStream
-                bluetoothSocket = mmSocket
+                bluetoothAdapter?.cancelDiscovery()    // Cancel discovery because it otherwise slows down the connection.
+                mmSocket?.connect()                         // Connect the BT device
+                OutputStream = mmSocket?.outputStream       // Getting the output stream
+                InputStream = mmSocket?.inputStream         // Getting the input stream
+                bluetoothSocket = mmSocket                  // Getting the socket
             }
 
         }
-        //Starting the thread if the HT-05 has been found
+        //Starting the connection thread if the HT-05 has been found
         if (deviceHCMAC != null)
         {
             val connectThread = ConnectThread(deviceHCMAC!!)
@@ -162,11 +165,13 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    // Call this function to read data from the remote device,
+    // Not used in this prototype version of the application.
     fun readBytes():ByteArray? {
         try{
             return InputStream?.readBytes()
         } catch (e: IOException) {
-            Log.e("error", "Error occurred when sending data", e)
+            Log.e("error", "Error occurred when receiving data", e)
         }
         val errorString :String = "Error"
         return errorString.toByteArray()

@@ -9,19 +9,19 @@
 
     <TextView
         android:id="@+id/title"
-        android:layout_width="185dp"
+        android:layout_width="168dp"
         android:layout_height="112dp"
-        android:text="E-Motion Controls"
+        android:text="Controls"
         android:textAlignment="center"
         android:textColor="@color/darkBlue"
         android:textSize="28sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.355"
+        app:layout_constraintHorizontal_bias="0.316"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.1" />
+        app:layout_constraintVertical_bias="0.735" />
 
     <SeekBar
         android:id="@+id/seekBar"
@@ -104,9 +104,9 @@
         android:layout_width="113dp"
         android:layout_height="54dp"
         android:backgroundTint="#0C8A01"
-        android:text="Meteo"
+        android:text="Weather"
         android:textColor="@color/white"
-        android:textSize="20sp"
+        android:textSize="17sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.656"
@@ -114,17 +114,16 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.151" />
 
-    <ProgressBar
-        android:id="@+id/batteryLevel"
-        style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="153dp"
-        android:layout_height="240dp"
-        android:rotation="270"
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="171dp"
+        android:layout_height="143dp"
+        android:src="@drawable/logo"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.335"
-        app:layout_constraintStart_toStartOf="@+id/seekBar"
+        app:layout_constraintHorizontal_bias="0.317"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.83" />
+        app:layout_constraintVertical_bias="0.201" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

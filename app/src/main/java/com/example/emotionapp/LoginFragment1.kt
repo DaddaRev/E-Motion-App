@@ -1,3 +1,5 @@
+//Davide Reverberi E-MotionApp
+
 package com.example.emotionapp
 
 import android.graphics.Color
@@ -17,7 +19,13 @@ import kotlinx.coroutines.withContext
 import retrofit2.Response
 import java.net.SocketTimeoutException
 
-
+/**
+ *
+ * LoginFragment1 is the Fragment that handles the login functionality of an application.
+ * This class provides a user interface for entering login credentials and managing user authentication.
+ * It also includes navigation to the registration fragment.
+ *
+ **/
 class LoginFragment1 : Fragment() {
 
     val myCouroutineScope = CoroutineScope(Dispatchers.IO)
@@ -43,7 +51,6 @@ class LoginFragment1 : Fragment() {
 
         val mainActivity = activity as MainActivity
         val device = mainActivity.deviceHCMAC
-        val outputStream = mainActivity.OutputStream
 
         val navController = findNavController()
 
@@ -51,17 +58,15 @@ class LoginFragment1 : Fragment() {
         loginButton.setOnClickListener(object : View.OnClickListener {
             override fun onClick(v: View?) {
                 val textView: TextView = view.findViewById(R.id.textViewR)
-                if (device == null) {
+
+                // The following code is specific for the test version with emulator,
+                // in which it is possible to navigate the bluetooth screen even without connection to the HC-05 module.
+                // Change the below boolean comparison to an equality if you are not in emulator mode.
+
+                if (device != null) {
                     textView.text = "\nDevice not found, pair the device and restart the application"
-                    //val action = LoginFragment1Directions.actionLoginFragment1ToControlsFragment()
-                    //navController.navigate(action)
-                }else{
 
-                    //Remove this in production mode
-
-                    val action = LoginFragment1Directions.actionLoginFragment1ToControlsFragment()
-                    navController.navigate(action)
-
+                }else{   // The device is definitely null  --> No bluetooth devices available in the emulator code
 
                     //User Login Handler
                     myCouroutineScope.launch {

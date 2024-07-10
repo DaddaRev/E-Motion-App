@@ -1,3 +1,5 @@
+//Davide Reverberi E-MotionApp
+
 package com.example.emotionapp
 
 import android.app.Service
@@ -11,6 +13,12 @@ import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 
+/**
+ *
+ * WebService is a Service class that provides methods for interacting with a web service API.
+ * It uses Retrofit for making HTTP requests and Moshi for JSON serialization/deserialization.
+ *
+ */
 class WebService : Service() {
 
     private val moshi = Moshi.Builder()
@@ -24,14 +32,18 @@ class WebService : Service() {
         .writeTimeout(30, TimeUnit.SECONDS)   // Write timeout
         .build()
 
+    //If not in the emulator version of the code (Emulator: " http://10.0.2.2:5000 "),
+    // change this below URL with the IP of the server Device (Device: " http://<Server IP address>:5000 ")
+
     val retrofit = Retrofit.Builder()
-        .baseUrl(" http://192.168.0.149:5000 ")  //Change with the final production server (Emulator: http://10.0.2.2:5000)
+        .baseUrl(" http://10.0.2.2:5000 ")
         .addConverterFactory(MoshiConverterFactory.create(moshi))
         .client(okHttpClient)
         .build()
 
     val service = retrofit.create(WebServiceAPI::class.java)
 
+    // Called when a client binds to the service.
     private val binder = MyBinder(this)
     override fun onBind(intent: Intent?): IBinder? {
         return binder
