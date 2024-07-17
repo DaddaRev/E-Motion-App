@@ -49,7 +49,7 @@
 It is recommended to read the user manual (E-MotionDoc en.pdf) to test the operation of the application. 
 It should be remembered that the app is still in prototype version, which is why an apk has not yet been released and the associated server has not yet been made public.
 <br><br>
-**NOTE**br>
+**NOTE**<br>
 E-MotionDoc en.pdf, E-MotionDoc.pdf and the images directory are NOT part of the Kotlin project. Do not import them in the Android Studio IDE after downloading the project from this reposotory.
 
 ## Contacts
