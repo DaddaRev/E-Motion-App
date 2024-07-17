@@ -1,6 +1,8 @@
-# E-Motion Application (Prototype)
+# E-Motion Application (prototype)
 
-![E-MotionAppLogo](images/logo.png)
+
+<img src="images/logo.png" alt="E-MotionAppLogo" width="200"/>
+
 
 ## Overview
 
@@ -28,19 +30,19 @@
 
 ### Home Screen (Login)
 
-![Home Screen](images/loginPage.png)
+<img src="images/loginPage.png" alt="login" width="150"/>
 
 ### Register page
 
-![reg](images/registerPage.png)
+<img src="images/registerPage.png" alt="reg" width="150"/>
 
 ### Control interface
 
-![control](images/controlsPage.png)
+<img src="images/controlsPage.png" alt="control" width="150"/>
 
 ### Weather Screen
 
-![weather](images/meteoSanPoloEx.png)
+<img src="images/meteoSanPoloEx" alt="weatger" width="150"/>
 
 ## Get Started
 
