@@ -59,14 +59,15 @@ class LoginFragment1 : Fragment() {
             override fun onClick(v: View?) {
                 val textView: TextView = view.findViewById(R.id.textViewR)
 
-                // The following code is specific for the test version with emulator,
-                // in which it is possible to navigate the bluetooth screen even without connection to the HC-05 module.
-                // Change the below boolean comparison to an equality if you are not in emulator mode.
+                // The following code is specific for the test version with a physical device
+                // in which it is possible to navigate to the bluetooth controls interface
+                // only if the connection with HC-05 device is done.
+                // Change the below boolean comparison to an inequality if you are in the emulator test mode. (device != null)
 
-                if (device != null) {
+                if (device == null) {
                     textView.text = "\nDevice not found, pair the device and restart the application"
 
-                }else{   // The device is definitely null  --> No bluetooth devices available in the emulator code
+                }else{   // The device is connected --> User login
 
                     //User Login Handler
                     myCouroutineScope.launch {

@@ -21,7 +21,7 @@ import java.net.SocketTimeoutException
 
 /**
  *
- * RegisterFragment is the fragment that manages the functionality of registering a user to the application database.
+ * registerFragment is the fragment that manages the functionality of registering a user to the application database.
  * This class provides a user interface for entering data for creating a new personal account.
  * Also includes navigation to the login fragment.
  *

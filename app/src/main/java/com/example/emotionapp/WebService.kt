@@ -36,7 +36,7 @@ class WebService : Service() {
     // change this below URL with the IP of the server Device (Device: " http://<Server IP address>:5000 ")
 
     val retrofit = Retrofit.Builder()
-        .baseUrl(" http://10.0.2.2:5000 ")
+        .baseUrl(" http://192.168.43.77:5000 ")
         .addConverterFactory(MoshiConverterFactory.create(moshi))
         .client(okHttpClient)
         .build()

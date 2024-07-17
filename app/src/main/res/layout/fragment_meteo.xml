@@ -120,6 +120,7 @@
         android:id="@+id/textView5"
         android:layout_width="322dp"
         android:layout_height="47dp"
+        android:textSize="22sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.523"

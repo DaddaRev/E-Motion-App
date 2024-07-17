@@ -91,7 +91,7 @@ class MeteoFragment : Fragment() {
                             }
                         } catch (e: SocketTimeoutException) {
                             withContext(Dispatchers.Main) {
-                                errorText2.text = "\nServer is currently offline or not reacheble"
+                                errorText2.text = "\nServer is currently offline or not reacheable"
                             }
                         } catch (e: Exception) {
                             withContext(Dispatchers.Main) {

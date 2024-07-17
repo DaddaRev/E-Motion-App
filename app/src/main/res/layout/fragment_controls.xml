@@ -9,19 +9,19 @@
 
     <TextView
         android:id="@+id/title"
-        android:layout_width="168dp"
-        android:layout_height="112dp"
-        android:text="Controls"
+        android:layout_width="165dp"
+        android:layout_height="106dp"
+        android:text="Emotion\nControls"
         android:textAlignment="center"
         android:textColor="@color/darkBlue"
-        android:textSize="28sp"
+        android:textSize="26sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.316"
+        app:layout_constraintHorizontal_bias="0.318"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.735" />
+        app:layout_constraintVertical_bias="0.311" />
 
     <SeekBar
         android:id="@+id/seekBar"
@@ -113,17 +113,5 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.151" />
-
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="171dp"
-        android:layout_height="143dp"
-        android:src="@drawable/logo"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.317"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.201" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
