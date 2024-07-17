@@ -38,11 +38,11 @@
 
 ### Control interface
 
-<img src="images/controlsPage.png" alt="control" width="250"/>
+<img src="images/controlsPage.png" alt="control" width="450"/>
 
 ### Weather Screen
 
-<img src="images/meteoSanPoloEx.png" alt="weatger" width="400"/>
+<img src="images/meteoSanPoloEx.png" alt="weatger" width="450"/>
 
 ## Get Started
 
