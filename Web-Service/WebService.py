@@ -39,7 +39,7 @@ def get_weather():
     city = request.args.get('city')
 
     try:
-        # Getting the coordinates for a specified City
+        # Getting the coordinates for a specified City, change the API key with your own
         url = f'http://api.openweathermap.org/data/2.5/forecast?q={city}&appid=3a97fda7fd3c8cc3c0b9c5e9bccb23dd&units=metric'
         response = requests.get(url)
         response.raise_for_status()
